@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Logs - LLM Shield</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LLM Shield</h1>
+            <p>Security Logs</p>
+            <nav>
+                <a href="/">Chat</a>
+                <a href="/logs" class="active">Security Logs</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="logs-container">
+                <div class="logs-header">
+                    <h2>Recent Security Events</h2>
+                    <p>Showing the most recent security events detected by the system.</p>
+                </div>
+                
+                <table class="logs-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Type</th>
+                            <th>Source</th>
+                            <th>Details</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if threats %}
+                            {% for threat in threats %}
+                                <tr class="log-entry">
+                                    <td>{{ threat.timestamp }}</td>
+                                    <td><span class="threat-type">{{ threat.threat_type }}</span></td>
+                                    <td>{{ threat.source }}</td>
+                                    <td>{{ threat.details }}</td>
+                                    <td>{{ threat.action_taken }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="5" class="no-logs">No security events have been recorded yet.</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </main>
+        
+        <footer>
+            <p>LLM Shield Cybersecurity Project &copy; 2025</p>
+            <div class="system-status">
+                <span>System Status:</span>
+                <span id="system-status">Checking...</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

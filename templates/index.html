@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Shield - Secure AI Interaction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LLM Shield</h1>
+            <p>Secure Middleware for LLM Interactions</p>
+            <nav>
+                <a href="/" class="active">Chat</a>
+                <a href="/logs">Security Logs</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="chat-container">
+                <div id="chat-messages">
+                    <div class="system-message">
+                        <p>Welcome to LLM Shield. This is a secure interface to interact with AI models.</p>
+                        <p>Your inputs are protected by multiple security layers to prevent prompt injection and other security risks.</p>
+                    </div>
+                </div>
+                
+                <div class="input-area">
+                    <textarea id="user-input" placeholder="Type your message here..."></textarea>
+                    <button id="send-button">Send</button>
+                </div>
+                
+                <div id="status-indicator">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Ready</span>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>LLM Shield Cybersecurity Project &copy; 2025</p>
+            <div class="system-status">
+                <span>System Status:</span>
+                <span id="system-status">Checking...</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
